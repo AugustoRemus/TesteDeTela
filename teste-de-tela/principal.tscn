@@ -1,0 +1,139 @@
+[gd_scene load_steps=2 format=3 uid="uid://7kt72il0pg0t"]
+
+[ext_resource type="Script" uid="uid://ixm86uri5vnh" path="res://principaç.gd" id="1_tr6oq"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tr6oq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="maior" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -180.0
+offset_right = 93.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Configurar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Largura" type="Label" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Largura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="botoesAltura" type="GridContainer" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="mais" type="Button" parent="maior/botoesAltura"]
+layout_mode = 2
+text = " + "
+
+[node name="menos" type="Button" parent="maior/botoesAltura"]
+layout_mode = 2
+text = "  -  "
+
+[node name="Label2" type="Label" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "altura"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="botoesLargura" type="GridContainer" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="mais" type="Button" parent="maior/botoesLargura"]
+layout_mode = 2
+text = " + "
+
+[node name="menos" type="Button" parent="maior/botoesLargura"]
+layout_mode = 2
+text = "  -  "
+
+[node name="tamanhoTela" type="Label" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tamanho da Tela:"
+
+[node name="tamanhoTela2" type="GridContainer" parent="maior"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="largura" type="Label" parent="maior/tamanhoTela2"]
+layout_mode = 2
+text = "Largura"
+
+[node name="larguraVar" type="Label" parent="maior/tamanhoTela2"]
+layout_mode = 2
+text = "640"
+
+[node name="altura" type="Label" parent="maior/tamanhoTela2"]
+layout_mode = 2
+text = "Altura:"
+
+[node name="alturaVar" type="Label" parent="maior/tamanhoTela2"]
+layout_mode = 2
+text = "360"
+
+[node name="manual" type="GridContainer" parent="maior"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="maior/manual"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Mudar Manualmente"
+
+[node name="largura" type="LineEdit" parent="maior/manual"]
+layout_mode = 2
+placeholder_text = "Largura"
+
+[node name="altura" type="LineEdit" parent="maior/manual"]
+layout_mode = 2
+placeholder_text = "Altura"
+
+[node name="confirmar" type="Button" parent="maior/manual"]
+layout_mode = 2
+text = "Confirmar"
+
+[connection signal="pressed" from="maior/botoesAltura/mais" to="." method="alturaAdicionar"]
+[connection signal="pressed" from="maior/botoesAltura/menos" to="." method="altiraTirar"]
+[connection signal="pressed" from="maior/botoesLargura/mais" to="." method="_on_mais_pressed"]
+[connection signal="pressed" from="maior/botoesLargura/menos" to="." method="_on_menos_pressed"]
+[connection signal="text_changed" from="maior/manual/largura" to="." method="_on_largura_text_changed"]
+[connection signal="text_changed" from="maior/manual/altura" to="." method="_on_altura_text_changed"]
+[connection signal="pressed" from="maior/manual/confirmar" to="." method="_on_confirmar_pressed"]
